@@ -1,8 +1,6 @@
 // Simple Node MCU as a webserver :---
 
-
 #include<ESP8266WiFi.h>
-
 WiFi.client;
 WiFiServer server(80);
 
@@ -10,19 +8,17 @@ int led1 = 14 ; // 14 number is equivlent to "D5" pin of Node_mcu
 int led2 = 12 ; // 12 number is equivlent to "D6" pin of Node_mcu
 
 void setup() {
-
   pinMode(led1 , OUTPUT);
   pinMode(led2 , OUTPUT);
-  
   Serial.begin(9600);
   WiFi.begin("AtoZ","8918172922"); // Bracket ke andar ka pehle wala string hai usme "wifa ka naam" likha hai aur dusre string me "wifi ka password" likha hai.
   while(WiFi.status() != WL_CONNECTED){
-    Serial.println("Connecting.....");
+    Serial.println("Connecting....."); //Ye connecting dikhayega jab esp8266 hamare device se connect horaha hoga tab.
     delay(200);
   }
   server.begin();
-  Serial.println("NodeMcu is connected!");
-  Serial.println(WiFi.localIP());  // "WiFi.localIP()" it is used to know the ip adres of the connected device
+  Serial.println("NodeMcu is connected!"); // jab node mcu hamare diye gaye wifi se connect hojaega to "NodeMcu is connected!" likhayega.
+  Serial.println(WiFi.localIP());  // "WiFi.localIP()" it is used to know the ip adres of the connected device.
 }
 
 void loop() {
